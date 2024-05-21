@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('cars.index', function () {
+    return view('cars');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -29,3 +38,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/roles',[App\Http\Controllers\RoleController::class,'roles'])->name('roles');
+Route::get('/cars',[App\Http\Controllers\CarController::class,'cars'])->name('cars');
+
+Route::resources([
+    'roles' => RoleController::class,
+    'users' => UserController::class,
+    'cars' => CarController::class,
+]);
