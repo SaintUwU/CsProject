@@ -67,11 +67,29 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Log Out') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('lockscreen') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('lockscreen').submit();">
+                                    {{__('Lock Screen') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
+                                    </form>
+                                    <form id="lockscreen" action="{{ route('lockscreen') }}" method="POST" class="d-none">
+                                        @csrf
+                                        <script>
+                                            //prevent back navigation
+                                               window.history.pushState(null, null, window.location.href);
+                                                window.onpopstate = function () {
+                                                    window.history.forward();
+                                                };
+                                                
+                                        
+                                        </script>
+                                        
                                     </form>
                                 </div>
                             </li>

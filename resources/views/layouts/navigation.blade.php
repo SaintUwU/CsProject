@@ -47,6 +47,11 @@
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('lockscreen')"
+                            onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                            {{__('Lock Screen') }}
+                            </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>

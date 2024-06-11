@@ -26,5 +26,6 @@ class LockScreenController extends Controller
 
         return back()->withErrors(['password' => 'Incorrect password.']);
     }
+
 }
 

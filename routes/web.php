@@ -65,6 +65,8 @@ Route::get('/cars',[App\Http\Controllers\CarController::class,'cars'])->name('ca
 
 Route::get('/lockscreen', [LockScreenController::class, 'show'])->name('lockscreen');
 Route::post('/lockscreen', [LockScreenController::class, 'unlock'])->name('unlock');
+Route::get('/unlock', [LockScreenController::class, 'unlock'])->name('unlock');
+Route::post('/unlock', [LockScreenController::class, 'unlock'])->name('unlock');
 
 Route::post('/lockscreen', function () {
     session(['locked' => true]);
