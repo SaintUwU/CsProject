@@ -64,6 +64,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                   <a class= "dropdown-item" href="{{ route('userProfile')}}">'My Profile'</a> 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -74,7 +75,7 @@
                                     document.getElementById('lockscreen').submit();">
                                     {{__('Lock Screen') }}
                                     </a>
-
+                                 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -86,11 +87,12 @@
                                                 window.onpopstate = function () {
                                                     window.history.forward();
                                                 };
-                                                
+                                                window.onbeforeunload = null;
                                         
                                         </script>
-                                        
+                                    
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest

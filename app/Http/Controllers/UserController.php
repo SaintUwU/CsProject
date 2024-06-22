@@ -81,11 +81,11 @@ class UserController extends Controller
     public function edit(User $user): View
     {
         // Check Only Super Admin can update his own Profile
-        if ($user->hasRole('Super Admin')){
+      /*  if ($user->hasRole('Super Admin')){
             if($user->id != auth()->user()->id){
                 abort(403, 'USER DOES NOT HAVE THE RIGHT PERMISSIONS');
             }
-        }
+        } */
 
         return view('users.edit', [
             'user' => $user,

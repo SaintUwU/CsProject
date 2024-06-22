@@ -39,10 +39,14 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/profile/edit', [ProfileController::class, 'edit'])->name('userProfile');
 });
+
+
+
 
 Route::middleware([ 'auth','lockscreen'])->group(function () {
     Route::get('/dashboard', function () {
@@ -76,6 +80,8 @@ Route::post('/lockscreen', function () {
 
 Route::resources([
     'roles' => RoleController::class,
-    'users' => UserController::class,
+    'users' => UserController::class, 
     'cars' => CarController::class,
+
 ]);
+
